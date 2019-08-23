@@ -28,9 +28,6 @@ final class ClientQueryTest extends TestCase
         $this->assertEquals( true, true );
     }
 
-
-
-
     public function testSenderIdIsUnder128Characters(): void
     {
         $this->expectException( Exception::class );
@@ -54,8 +51,6 @@ final class ClientQueryTest extends TestCase
            ->trackingNumber( 'trackingNumber' )
            ->xml();
    }
-
-
 
    public function testTrackingNumberLengthMustBeBetween1And16(): void
    {
@@ -154,7 +149,6 @@ EOT
            ->xml();
    }
 
-
    public function testFailsWhenMissingSenderIdParameter(): void
    {
 
@@ -166,8 +160,6 @@ EOT
            ->trackingNumber( 'trackingNumber' )
            ->xml();
    }
-
-
 
    public function testFailsWhenMissingRecipientIdParameter(): void
    {
