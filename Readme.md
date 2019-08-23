@@ -17,15 +17,25 @@ A PHP library for creating and submitting XML WCTP requests and responses
 
     $clientQuery = WCTPOperation::ClientQuery( $options );
     
-    //get XML string
+    //get XML string from SimpleXMLElement
     $xml = $clientQuery->asXML();
-```
 
-You can also use the `SimpleXMLElement` object directly. More information at https://www.php.net/manual/en/book.simplexml.php
+
+```
 
 
 ```php
 
+    use NotifiUs\WCTP\WCTPOperation\ClientQuery;
+
+    $clientQuery = new ClientQuery();
+    $xml = $clientQuery
+            ->senderID( 'senderID' )
+            ->recipientID( 'recipientID' )
+            ->trackingNumber( 'trackingNumber' )
+            ->xml();         
+
+ 
     /*
     SimpleXMLElement Object
     (
