@@ -6,25 +6,6 @@ use NotifiUs\WCTP\XML\ClientQuery;
 
 final class ClientQueryTest extends TestCase
 {
-    public function testShowClientQuerySimpleXMLElement(): void
-    {
-        $clientQuery = new ClientQuery( 'token' );
-
-        $xml = $clientQuery
-            ->senderID( 'senderID' )
-            ->recipientID( 'recipientID' )
-            ->trackingNumber( 'trackingNumber' )
-            ->xml();
-
-        echo PHP_EOL; echo PHP_EOL;
-
-        echo print_r( $xml, true );
-
-        echo PHP_EOL; echo PHP_EOL;
-
-        $this->assertEquals( true, true );
-    }
-
     public function testPassingTokenAddsWctpTokenParamToXML(): void
     {
         $options = [

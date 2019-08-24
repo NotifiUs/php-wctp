@@ -16,7 +16,8 @@
   "minimum-stability": "dev",
   "require": {
     "php": "^7.3",
-    "ext-SimpleXML": "^7.3"
+    "ext-SimpleXML": "^7.3",
+    "nesbot/carbon": "dev-master"
   },
   "autoload": {
     "psr-4": {
