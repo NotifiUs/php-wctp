@@ -8,8 +8,6 @@ final class ClientQueryTest extends TestCase
 {
     public function testShowClientQuerySimpleXMLElement(): void
     {
-
-
         $clientQuery = new ClientQuery( 'token' );
 
         $xml = $clientQuery

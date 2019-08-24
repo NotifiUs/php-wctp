@@ -10,8 +10,14 @@
 
         public function __construct( $token = null )
         {
-            if( ! is_null( $token ) && strlen( $token ) > 16 ){ throw new InvalidArgumentException('Token must be between 1 - 16 characters in length'); }
             $this->token = $token;
+
+            if( ! is_null( $this->token ) && strlen( $this->token ) > 16 )
+            {
+                throw new InvalidArgumentException('Token must be between 1 - 16 characters in length');
+            }
         }
+
+        abstract public function xml();
 
     }

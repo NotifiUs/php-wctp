@@ -93,3 +93,11 @@ SimpleXMLElement Object
 ```
 
 
+## Testing
+
+Running the test suite:
+
+```console
+vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
+```
+
