@@ -45,6 +45,34 @@ $xml = $clientQuery
 |wctp-VersionQuery | NotifiUs\WCTP\XML\VersionQuery |  &check; | 
 
 
+## General Information
+
+## Dates
+
+We rely on the `nesbot/carbon` library for dates throughout our library. 
+
+
+### Add WCTP token to wctp-Operation
+
+For all XML WCTP methods below, you can optionally, pass in a `wctpToken` to the constructor:
+
+```php
+$clientQuery = new ClientQuery( 'token' );
+```
+
+This will add the XML attribute `wctpToken="token"` to the `<wctp-Operation>` element.
+
+
+### Return Type
+The `$xml` variable will be a *SimpleXMLElement* Object. You can get the XML as a string by calling `$xml->asXML()`
+
+### Relaxed parameter requirements
+
+While we follow the WCTP recommendations for parameters and lengths, we don't enforce allowed characters. 
+Anything that is not XML compliant will be automatically escaped, so keep that in mind. 
+This should provide an additional level of flexibility and modernize the now ~15 year-old protocol. 
+
+
 ## WCTP XML Methods
 
 ### wctp-ClientQuery
@@ -61,19 +89,7 @@ $xml = $clientQuery
     ->recipientID( 'recipientID' )
     ->trackingNumber( 'trackingNumber' )
     ->xml();
-```
 
-Optionally, pass in a `wctpToken`:
-
-```php
-$clientQuery = new ClientQuery( 'token' );
-```
-
-This will add the XML attribute `wctpToken="token"` to the `<wctp-Operation>` element.
-
-The `$xml` variable will be a *SimpleXMLElement* Object. You can get the XML as a string by calling `$xml->asXML()`
-
-```php
 print_r( $xml );
 
 /*
@@ -99,6 +115,32 @@ SimpleXMLElement Object
 */
 ```
 
+
+### wctp-VersionQuery
+
+Create an XML representation of the wctp-VersionQuery operation. 
+
+
+```php
+use NotifiUs\WCTP\XML\VersionQuery;
+
+$versionQuery = new VersionQuery();
+$xml = $versionQuery
+    ->inquirer( 'inquirer' )
+    ->dateTime( Carbon::now() )
+    ->xml();
+```
+
+You can also leave off optional parameters like this:
+
+```php
+//dateTime is an optional parameter
+$xml = $versionQuery
+    ->inquirer( 'inquirer' )
+    ->xml();
+```
+
+```
 
 ## Testing
 
