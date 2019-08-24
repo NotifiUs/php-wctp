@@ -36,12 +36,6 @@
 
             $xml = new SimpleXMLElement( $this->xml_template );
 
-            if( $xml === false )
-            {
-                $errors = libxml_get_errors();
-                throw new InvalidArgumentException( $errors[0]->message );
-            }
-
             if( ! is_null( $this->token ) )
             {
                 $xml->addAttribute('wctpToken', $this->token );
@@ -51,6 +45,12 @@
             $cq->addAttribute( 'senderID', $this->senderID );
             $cq->addAttribute( 'recipientID', $this->recipientID );
             $cq->addAttribute( 'trackingNumber', $this->trackingNumber );
+
+            if( $xml === false || $cq === false )
+            {
+                $errors = libxml_get_errors();
+                throw new InvalidArgumentException( $errors[0]->message );
+            }
 
 
             return  $xml;

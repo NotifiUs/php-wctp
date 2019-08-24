@@ -30,12 +30,6 @@
 
             $xml = new SimpleXMLElement( $this->xml_template );
 
-            if( $xml === false )
-            {
-                $errors = libxml_get_errors();
-                throw new InvalidArgumentException( $errors[0]->message );
-            }
-
             if( ! is_null( $this->token ) )
             {
                 $xml->addAttribute('wctpToken', $this->token );
@@ -47,6 +41,12 @@
             if( ! is_null( $this->dateTime ) )
             {
                 $vq->addAttribute('dateTime', $this->dateTime->timezone('UTC')->format( 'Y-m-d\TH:i:s' ) );
+            }
+
+            if( $xml === false || $vq === false )
+            {
+                $errors = libxml_get_errors();
+                throw new InvalidArgumentException( $errors[0]->message );
             }
 
             return  $xml;
