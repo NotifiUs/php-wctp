@@ -140,8 +140,6 @@ $xml = $versionQuery
     ->xml();
 ```
 
-```
-
 ## Testing
 
 After cloning the repository, you can run the test suite like this:
