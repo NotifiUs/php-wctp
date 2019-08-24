@@ -5,9 +5,13 @@ A PHP library for creating and submitting XML WCTP requests and responses
 
 ## Getting Started
 
+Install the library using composter: 
+
 ```console
 composer require notifius/wctp
 ```
+
+Example use of library: 
 
 ```php
 use NotifiUs\WCTP\XML\ClientQuery;
@@ -65,7 +69,10 @@ Optionally, pass in a `wctpToken`:
 $clientQuery = new ClientQuery( 'token' );
 ```
 
+This will add the XML attribute `wctpToken="token"` to the `<wctp-Operation>` element.
+
 The `$xml` variable will be a *SimpleXMLElement* Object. You can get the XML as a string by calling `$xml->asXML()`
+
 ```php
 print_r( $xml );
 
@@ -95,7 +102,7 @@ SimpleXMLElement Object
 
 ## Testing
 
-Running the test suite:
+After cloning the repository, you can run the test suite like this:
 
 ```console
 vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
