@@ -66,17 +66,35 @@ EOT
         {
             $msg = '';
 
-            if( ! isset( $this->senderID ) ){ $msg = 'senderID parameter is required'; }
-            if( ! isset( $this->recipientID ) ){ $msg = 'recipientID parameter is required'; }
-            if( ! isset( $this->trackingNumber ) ){ $msg = 'trackingNumber parameter is required'; }
-
-            if( strlen( $this->senderID ) < 1 || strlen( $this->senderID ) > 128 ){ $msg = 'senderID must be between 1 - 128 characters in length'; }
-            if( strlen( $this->recipientID ) < 1 || strlen( $this->recipientID ) > 128 ){ $msg = 'recipientID must be between 1 - 128 characters in length'; }
-            if( strlen( $this->trackingNumber ) < 1 || strlen( $this->trackingNumber ) > 16 ){ $msg = 'trackingNumber must be between 1 - 16 characters in length'; }
+            if( ! isset( $this->senderID ) )
+            {
+                $msg = 'senderID parameter is required';
+            }
+            elseif( ! isset( $this->recipientID ) )
+            {
+                $msg = 'recipientID parameter is required';
+            }
+            elseif( ! isset( $this->trackingNumber ) )
+            {
+                $msg = 'trackingNumber parameter is required';
+            }
+            elseif( strlen( $this->senderID ) < 1 || strlen( $this->senderID ) > 128 )
+            {
+                $msg = 'senderID must be between 1 - 128 characters in length';
+            }
+            elseif( strlen( $this->recipientID ) < 1 || strlen( $this->recipientID ) > 128 )
+            {
+                $msg = 'recipientID must be between 1 - 128 characters in length';
+            }
+            elseif( strlen( $this->trackingNumber ) < 1 || strlen( $this->trackingNumber ) > 16 )
+            {
+                $msg = 'trackingNumber must be between 1 - 16 characters in length';
+            }
 
             if( strlen( $msg ) )
             {
                 throw new InvalidArgumentException( $msg );
             }
+
         }
     }

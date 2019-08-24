@@ -60,6 +60,7 @@ EOT
     public function testTokenIsUnder16Characters(): void
     {
         $this->expectException( InvalidArgumentException::class );
+        $this->expectExceptionMessage( 'Token must be between 1 - 16 characters in length' );
 
         $clientQuery = new ClientQuery( str_pad( '1', 17 ) ) ;
         $xml = $clientQuery
@@ -74,6 +75,7 @@ EOT
     public function testSenderIdIsUnder128Characters(): void
     {
         $this->expectException( InvalidArgumentException::class );
+        $this->expectExceptionMessage( 'senderID must be between 1 - 128 characters in length' );
 
         $clientQuery = new ClientQuery();
         $xml = $clientQuery
@@ -86,6 +88,7 @@ EOT
    public function testRecipientIdIsUnder128Characters(): void
    {
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'recipientID must be between 1 - 128 characters in length' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
@@ -98,6 +101,7 @@ EOT
    public function testTrackingNumberLengthMustBeBetween1And16(): void
    {
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'trackingNumber must be between 1 - 16 characters in length' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
@@ -110,7 +114,6 @@ EOT
 
    public function testReturnsWCTPOperationStructure(): void
    {
-
        $options = [
            'senderID' => 'senderID',
            'recipientID' => 'recipientID',
@@ -155,8 +158,8 @@ EOT
 
    public function testSenderIdParameterCantBeEmpty(): void
    {
-
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'senderID must be between 1 - 128 characters in length' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
@@ -168,8 +171,8 @@ EOT
 
    public function testRecipientIdParameterCantBeEmpty(): void
    {
-
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'recipientID must be between 1 - 128 characters in length' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
@@ -181,8 +184,8 @@ EOT
 
    public function testTrackingNumberParameterCantBeEmpty(): void
    {
-
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'trackingNumber must be between 1 - 16 characters in length' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
@@ -194,8 +197,8 @@ EOT
 
    public function testFailsWhenMissingSenderIdParameter(): void
    {
-
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'senderID parameter is required' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
@@ -207,6 +210,7 @@ EOT
    public function testFailsWhenMissingRecipientIdParameter(): void
    {
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'recipientID parameter is required' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
@@ -218,6 +222,7 @@ EOT
    public function testFailsWhenMissingTrackingNumberParameter(): void
    {
        $this->expectException( InvalidArgumentException::class );
+       $this->expectExceptionMessage( 'trackingNumber parameter is required' );
 
        $clientQuery = new ClientQuery();
        $xml = $clientQuery
