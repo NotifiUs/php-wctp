@@ -5,10 +5,10 @@ A PHP library for creating and submitting XML WCTP requests and responses
 
 ## Getting Started
 
-Install the library using composter: 
+Coming soon: Install the library using composer: 
 
 ```console
-composer require notifius/wctp
+composer require <comingsoon>/wctp
 ```
 
 Example use of library: 
