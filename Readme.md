@@ -5,60 +5,22 @@ A PHP library for creating and submitting XML WCTP requests and responses
 
 ## Getting Started
 
-```php
-
-    use NotifiUs\WCTP\XML\WCTPOperation;
-
-    $options = [
-        'senderID' => 'senderID',
-        'recipientID' => 'recipientID',
-        'trackingNumber' => 'trackingNumber',
-    ];
-
-    $clientQuery = WCTPOperation::ClientQuery( $options );
-    
-    //get XML string from SimpleXMLElement
-    $xml = $clientQuery->asXML();
-
-
+```console
+composer require notifius/wctp
 ```
 
-
 ```php
+use NotifiUs\WCTP\XML\ClientQuery;
 
-    use NotifiUs\WCTP\WCTPOperation\ClientQuery;
+$clientQuery = new ClientQuery();
 
-    $clientQuery = new ClientQuery();
-    $xml = $clientQuery
-            ->senderID( 'senderID' )
-            ->recipientID( 'recipientID' )
-            ->trackingNumber( 'trackingNumber' )
-            ->xml();         
-
- 
-    /*
-    SimpleXMLElement Object
-    (
-        [@attributes] => Array
-            (
-                [wctpVersion] => WCTP-DTD-V1R3
-            )
-    
-        [wctp-ClientQuery] => SimpleXMLElement Object
-            (
-                [@attributes] => Array
-                    (
-                        [senderID] => senderID
-                        [recipientID] => recipientID
-                        [trackingNumber] => trackingNumber
-                    )
-    
-            )
-    
-    )
-    */
-
+$xml = $clientQuery
+    ->senderID( 'senderID' )
+    ->recipientID( 'recipientID' )
+    ->trackingNumber( 'trackingNumber' )
+    ->xml();
 ```
+
 
 ## Requests and Responses
 
@@ -77,5 +39,57 @@ A PHP library for creating and submitting XML WCTP requests and responses
 |wctp-SubmitClientMessage | Yes | No |
 |wctp-SubmitRequest | Yes | Yes |
 |wctp-VersionQuery | Yes | Yes  |
+
+
+## WCTP XML Methods
+
+### wctp-ClientQuery
+
+Create an XML representation of the wctp-ClientQuery operation. 
+
+```php
+use NotifiUs\WCTP\XML\ClientQuery;
+
+$clientQuery = new ClientQuery();
+
+$xml = $clientQuery
+    ->senderID( 'senderID' )
+    ->recipientID( 'recipientID' )
+    ->trackingNumber( 'trackingNumber' )
+    ->xml();
+```
+
+Optionally, pass in a `wctpToken`:
+
+```php
+$clientQuery = new ClientQuery( 'token' );
+```
+
+The `$xml` variable will be a *SimpleXMLElement* Object. You can get the XML as a string by calling `$xml->asXML()`
+```php
+print_r( $xml );
+
+/*
+SimpleXMLElement Object
+(
+    [@attributes] => Array
+        (
+            [wctpVersion] => WCTP-DTD-V1R3
+        )
+
+    [wctp-ClientQuery] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [senderID] => senderID
+                    [recipientID] => recipientID
+                    [trackingNumber] => trackingNumber
+                )
+
+        )
+
+)
+*/
+```
 
 
