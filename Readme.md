@@ -26,23 +26,23 @@ $xml = $clientQuery
 ```
 
 
-## Requests and Responses
+## XML Templating
 
-| Request | Server (receives) | Client (submits) |
-|---------|-------------------|------------------|
-|wctp-ClientQuery | Yes | No |
-|wctp-LookupSubscriber | Yes | No |
-|wctp-LookupResponse | No | Yes |
-|wctp-DeviceLocation | Yes | No |
-|wctp-DeviceLocationResponse | No | Yes |
-|wctp-MessageReply | Yes | Yes |
-|wctp-PollForMessages | Yes | No | 
-|wctp-ReturnToSvc | Yes | No |
-|wctp-SendMsgMulti | Yes | No |
-|wctp-StatusInfo | Yes | Yes |
-|wctp-SubmitClientMessage | Yes | No |
-|wctp-SubmitRequest | Yes | Yes |
-|wctp-VersionQuery | Yes | Yes  |
+| WCTP Method  | notifius/wctp   | Complete | 
+|---------| --- | --- | 
+|wctp-ClientQuery | NotifiUs\WCTP\XML\ClientQuery | &check; | 
+|wctp-LookupSubscriber | NotifiUs\WCTP\XML\LookupSubscriber | &times; | 
+|wctp-LookupResponse | NotifiUs\WCTP\XML\LookupResponse | &times; | 
+|wctp-DeviceLocation | NotifiUs\WCTP\XML\DeviceLocation | &times; | 
+|wctp-DeviceLocationResponse |NotifiUs\WCTP\XML\DeviceLocationResponse | &times; | 
+|wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply | &times; | 
+|wctp-PollForMessages |NotifiUs\WCTP\XML\PollForMessages | &times; | 
+|wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc | &times; | 
+|wctp-SendMsgMulti | NotifiUs\WCTP\XML\SendMsgMulti | &times; | 
+|wctp-StatusInfo |NotifiUs\WCTP\XML\StatusInfo | &times; | 
+|wctp-SubmitClientMessage | NotifiUs\WCTP\XML\SubmitClientMessage | &times; | 
+|wctp-SubmitRequest | NotifiUs\WCTP\XML\SubmitRequest | &times; | 
+|wctp-VersionQuery | NotifiUs\WCTP\XML\VersionQuery |  &check; | 
 
 
 ## WCTP XML Methods
