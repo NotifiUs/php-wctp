@@ -2,10 +2,9 @@
 
     namespace NotifiUs\WCTP\XML;
 
-    use SimpleXMLElement;
     use InvalidArgumentException;
 
-    class WCTPOperation
+    abstract class WCTPOperation
     {
         protected $token;
 
