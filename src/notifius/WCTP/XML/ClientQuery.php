@@ -29,35 +29,29 @@
             return $this;
         }
 
-
-        public function xml( )
+        public function xml(): SimpleXMLElement
         {
             $this->validate();
+            libxml_use_internal_errors( true );
 
-            libxml_use_internal_errors(true );
+            $xml = new SimpleXMLElement( $this->xml_template );
 
-            $xml = new SimpleXMLElement(
-<<<EOT
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE wctp-Operation SYSTEM "http://www.wctp.org/release/wctp-dtd-v1r3.dtd">
-<wctp-Operation wctpVersion="WCTP-DTD-V1R3">
-<wctp-ClientQuery senderID="{$this->senderID}" recipientID="{$this->recipientID}" trackingNumber="{$this->trackingNumber}" />
-</wctp-Operation>
-EOT
-            );
-
-            if( $xml === false ){
-
+            if( $xml === false )
+            {
                 $errors = libxml_get_errors();
                 throw new InvalidArgumentException( $errors[0]->message );
             }
-            else
+
+            if( ! is_null( $this->token ) )
             {
-                if( ! is_null( $this->token ) )
-                {
-                    $xml->addAttribute('wctpToken', $this->token );
-                }
+                $xml->addAttribute('wctpToken', $this->token );
             }
+
+            $cq = $xml->addChild( 'wctp-ClientQuery' );
+            $cq->addAttribute( 'senderID', $this->senderID );
+            $cq->addAttribute( 'recipientID', $this->recipientID );
+            $cq->addAttribute( 'trackingNumber', $this->trackingNumber );
+
 
             return  $xml;
         }

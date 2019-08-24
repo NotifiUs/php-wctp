@@ -23,46 +23,34 @@
             return $this;
         }
 
-
-        public function xml( )
+        public function xml(): SimpleXMLElement
         {
             $this->validate();
+            libxml_use_internal_errors( true );
 
-            libxml_use_internal_errors(true );
+            $xml = new SimpleXMLElement( $this->xml_template );
 
-            if( ! is_null( $this->dateTime ) )
+            if( $xml === false )
             {
-                $dateTimeString = " dateTime=\"{$this->dateTime->format('Y-m-d\TH:i:s' )}\" ";
-            }
-            else
-            {
-                $dateTimeString = '';
-            }
-
-            $xml = new SimpleXMLElement(
-<<<EOT
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE wctp-Operation SYSTEM "http://www.wctp.org/release/wctp-dtd-v1r3.dtd">
-<wctp-Operation wctpVersion="WCTP-DTD-V1R3">
-<wctp-VersionQuery inquirer="{$this->inquirer}" {$dateTimeString} />
-</wctp-Operation>
-EOT
-            );
-
-            if( $xml === false ){
-
                 $errors = libxml_get_errors();
                 throw new InvalidArgumentException( $errors[0]->message );
             }
-            else
+
+            if( ! is_null( $this->token ) )
             {
-                if( ! is_null( $this->token ) )
-                {
-                    $xml->addAttribute('wctpToken', $this->token );
-                }
+                $xml->addAttribute('wctpToken', $this->token );
+            }
+
+            $vq = $xml->addChild( 'wctp-VersionQuery' );
+            $vq->addAttribute( 'inquirer', $this->inquirer );
+
+            if( ! is_null( $this->dateTime ) )
+            {
+                $vq->addAttribute('dateTime', $this->dateTime->timezone('UTC')->format( 'Y-m-d\TH:i:s' ) );
             }
 
             return  $xml;
+
         }
 
         private function validate()

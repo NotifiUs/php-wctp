@@ -6,6 +6,17 @@ use NotifiUs\WCTP\XML\VersionQuery;
 
 final class VersionQueryTest extends TestCase
 {
+
+    public function testPlayground(): void
+    {
+        $versionQuery = new VersionQuery('token');
+        $xml = $versionQuery->inquirer( 'inquirer')->dateTime( Carbon::now() )->xml();
+        //die(print_r( $xml, true ) );
+
+        $this->assertEquals( true, true );
+
+    }
+
     public function testPassingTokenAddsWctpTokenParamToXML(): void
     {
         $options = [
@@ -15,7 +26,7 @@ final class VersionQueryTest extends TestCase
 
         $token = 'token';
 
-        $versionQuery = new VersionQuery( 'token' );
+        $versionQuery = new VersionQuery( $token );
         $xml = $versionQuery
             ->inquirer( $options['inquirer'] )
             ->dateTime( $options['dateTime'] )
@@ -26,7 +37,7 @@ final class VersionQueryTest extends TestCase
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE wctp-Operation SYSTEM "http://www.wctp.org/release/wctp-dtd-v1r3.dtd">
 <wctp-Operation wctpVersion="WCTP-DTD-V1R3" wctpToken="{$token}">
-<wctp-VersionQuery inquirer="{$options['inquirer']}" dateTime="{$options['dateTime']->format('Y-m-d\TH:i:s' )}" />
+<wctp-VersionQuery inquirer="{$options['inquirer']}" dateTime="{$options['dateTime']->timezone('UTC')->format('Y-m-d\TH:i:s' )}" />
 </wctp-Operation>
 EOT
         );
@@ -81,7 +92,7 @@ EOT
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE wctp-Operation SYSTEM "http://www.wctp.org/release/wctp-dtd-v1r3.dtd">
 <wctp-Operation wctpVersion="WCTP-DTD-V1R3">
-<wctp-VersionQuery inquirer="{$options['inquirer']}" dateTime="{$options['dateTime']->format('Y-m-d\TH:i:s' )}" />
+<wctp-VersionQuery inquirer="{$options['inquirer']}" dateTime="{$options['dateTime']->timezone('UTC')->format('Y-m-d\TH:i:s' )}" />
 </wctp-Operation>
 EOT
        );
