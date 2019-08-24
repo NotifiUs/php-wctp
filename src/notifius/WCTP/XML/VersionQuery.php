@@ -30,12 +30,21 @@
 
             libxml_use_internal_errors(true );
 
+            if( ! is_null( $this->dateTime ) )
+            {
+                $dateTimeString = " dateTime=\"{$this->dateTime->format('Y-m-d\TH:i:s' )}\" ";
+            }
+            else
+            {
+                $dateTimeString = '';
+            }
+
             $xml = new SimpleXMLElement(
 <<<EOT
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE wctp-Operation SYSTEM "http://www.wctp.org/release/wctp-dtd-v1r3.dtd">
 <wctp-Operation wctpVersion="WCTP-DTD-V1R3">
-<wctp-VersionQuery inquirer="{$this->inquirer}" dateTime="{$this->dateTime->format('Y-m-d\TH:i:s' )}" />
+<wctp-VersionQuery inquirer="{$this->inquirer}" {$dateTimeString} />
 </wctp-Operation>
 EOT
             );
@@ -63,10 +72,6 @@ EOT
             if( ! isset( $this->inquirer ) )
             {
                 $msg = 'inquirer parameter is required';
-            }
-            elseif( ! isset( $this->dateTime ) )
-            {
-                $msg = 'dateTime parameter is required';
             }
             elseif( strlen( $this->inquirer ) < 1 || strlen( $this->inquirer ) > 128 )
             {

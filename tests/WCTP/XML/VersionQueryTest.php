@@ -113,4 +113,25 @@ EOT
            ->xml();
    }
 
+   public function testDateTimeParameterCanBeEmpty(): void
+   {
+       $versionQuery = new VersionQuery();
+       $xml = $versionQuery
+           ->inquirer( 'inquirer' )
+           ->xml();
+
+       $this->assertInstanceOf('SimpleXMLElement', $xml );
+   }
+
+   public function testDateTimeFailsWithoutCarbonInstance(): void
+   {
+       $this->expectException( TypeError::class );
+
+       $versionQuery = new VersionQuery();
+       $xml = $versionQuery
+           ->inquirer( 'inquirer' )
+           ->dateTime( 'everyoneLovesCarbon?' )
+           ->xml();
+   }
+
 }
