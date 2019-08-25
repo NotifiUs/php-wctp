@@ -28,28 +28,28 @@ $xml = $clientQuery
 
 ## XML Templating
 
-| WCTP Method  | notifius/wctp   | Complete | 
-|---------| --- | --- | 
-|wctp-ClientQuery | NotifiUs\WCTP\XML\ClientQuery | &check; | 
-|wctp-LookupSubscriber | NotifiUs\WCTP\XML\LookupSubscriber | &times; | 
-|wctp-LookupResponse | NotifiUs\WCTP\XML\LookupResponse | &times; | 
-|wctp-DeviceLocation | NotifiUs\WCTP\XML\DeviceLocation | &times; | 
-|wctp-DeviceLocationResponse |NotifiUs\WCTP\XML\DeviceLocationResponse | &times; | 
-|wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply | &times; | 
-|wctp-PollForMessages |NotifiUs\WCTP\XML\PollForMessages | &times; | 
-|wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc | &times; | 
-|wctp-SendMsgMulti | NotifiUs\WCTP\XML\SendMsgMulti | &times; | 
-|wctp-StatusInfo |NotifiUs\WCTP\XML\StatusInfo | &times; | 
-|wctp-SubmitClientMessage | NotifiUs\WCTP\XML\SubmitClientMessage | &times; | 
-|wctp-SubmitRequest | NotifiUs\WCTP\XML\SubmitRequest | &times; | 
-|wctp-VersionQuery | NotifiUs\WCTP\XML\VersionQuery |  &check; | 
+| WCTP Method  | notifius/wctp   |
+|---------| --- |
+|wctp-ClientQuery | NotifiUs\WCTP\XML\ClientQuery |
+|wctp-LookupSubscriber | NotifiUs\WCTP\XML\LookupSubscriber | 
+|wctp-LookupResponse | NotifiUs\WCTP\XML\LookupResponse | 
+|wctp-DeviceLocation | NotifiUs\WCTP\XML\DeviceLocation | 
+|wctp-DeviceLocationResponse |NotifiUs\WCTP\XML\DeviceLocationResponse | 
+|wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply | 
+|wctp-PollForMessages |NotifiUs\WCTP\XML\PollForMessages | 
+|wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc | 
+|wctp-SendMsgMulti | NotifiUs\WCTP\XML\SendMsgMulti | 
+|wctp-StatusInfo |NotifiUs\WCTP\XML\StatusInfo | 
+|wctp-SubmitClientMessage | NotifiUs\WCTP\XML\SubmitClientMessage |
+|wctp-SubmitRequest | NotifiUs\WCTP\XML\SubmitRequest | 
+|wctp-VersionQuery | NotifiUs\WCTP\XML\VersionQuery |
 
 
 ## General Information
 
 ## Dates
 
-We rely on the `nesbot/carbon` library for dates throughout our library. 
+We rely on the `nesbot/carbon` composer package for handling dates throughout our library. 
 
 
 ### Add WCTP token to wctp-Operation
