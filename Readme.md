@@ -59,7 +59,7 @@ We rely on the `nesbot/carbon` composer package for handling dates throughout ou
 
 ### Add WCTP token to wctp-Operation
 
-For all XML WCTP methods below, you can optionally, pass in a `wctpToken` to the constructor:
+For all XML WCTP methods below, you can optionally pass in a `wctpToken` to the constructor:
 
 ```php
 $clientQuery = new ClientQuery( 'token' );
