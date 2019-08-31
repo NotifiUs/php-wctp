@@ -14,10 +14,11 @@
     }
   ],
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
     "php": "^7.3",
     "ext-SimpleXML": "^7.3",
-    "nesbot/carbon": "dev-master"
+    "nesbot/carbon": "^2.24.0"
   },
   "autoload": {
     "psr-4": {
