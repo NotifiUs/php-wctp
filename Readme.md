@@ -75,7 +75,7 @@ The `$xml` variable will be a *SimpleXMLElement* Object. You can get the XML as 
 
 While we follow the WCTP recommendations for parameters and lengths, we don't enforce allowed characters. 
 Anything that is not XML compliant will be automatically escaped, so keep that in mind. 
-This should provide an additional level of flexibility (via and modernize the now ~15 year-old protocol. 
+This should provide an additional level of flexibility (through conventions) and modernize the now ~15 year-old protocol. 
 
 
 ## WCTP XML Methods
