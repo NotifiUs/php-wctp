@@ -5,6 +5,7 @@
     use Carbon\Carbon;
     use SimpleXMLElement;
     use InvalidArgumentException;
+    use NotifiUs\WCTP\DeliveryPriority;
 
     class SubmitRequest extends WCTPOperation
     {
@@ -143,17 +144,21 @@
             $messageControl->addAttribute( 'messageID', $this->messageID );
 
             //optional
+            if( ! is_null( $this->preformatted ) ) { $messageControl->addAttribute( 'preformatted', $this->preformatted ? 'true' : 'false' ); }
+            if( ! is_null( $this->allowTruncation ) ) { $messageControl->addAttribute( 'allowTruncation', $this->allowTruncation ? 'true' : 'false' ); }
+            if( ! is_null( $this->allowResponse ) ) { $messageControl->addAttribute( 'allowResponse', $this->allowResponse ? 'true' : 'false' ); }
+            if( ! is_null(  $this->notifyWhenQueued ) ) { $messageControl->addAttribute( 'notifyWhenQueued', $this->notifyWhenQueued ? 'true' : 'false' ); }
+            if( ! is_null(  $this->notifyWhenDelivered ) ) { $messageControl->addAttribute( 'notifyWhenDelivered',  $this->notifyWhenDelivered ? 'true' : 'false' ); }
+            if( ! is_null(  $this->notifyWhenRead ) ) { $messageControl->addAttribute( 'notifyWhenRead', $this->notifyWhenRead ? 'true' : 'false' ); }
+            if( ! is_null(  $this->deliveryPriority ) ) { $messageControl->addAttribute( 'deliveryPriority', $this->deliveryPriority ? 'true' : 'false' ); }
+
             if( $this->transactionID ) { $messageControl->addAttribute( 'transactionID', $this->transactionID ); }
             if( $this->sendResponsesToID ) { $messageControl->addAttribute( 'sendResponsesToID', $this->sendResponsesToID ); }
-            if( $this->allowResponse ) { $messageControl->addAttribute( 'allowResponse', $this->allowResponse ); }
-            if( $this->notifyWhenQueued ) { $messageControl->addAttribute( 'notifyWhenQueued', $this->notifyWhenQueued ); }
-            if( $this->notifyWhenDelivered ) { $messageControl->addAttribute( 'notifyWhenDelivered', $this->notifyWhenDelivered ); }
-            if( $this->notifyWhenRead ) { $messageControl->addAttribute( 'notifyWhenRead', $this->notifyWhenRead ); }
-            if( $this->deliveryPriority ) { $messageControl->addAttribute( 'deliveryPriority', $this->deliveryPriority ); }
+
             if( $this->deliveryBefore ) { $messageControl->addAttribute( 'deliveryBefore', $this->deliveryBefore ); }
             if( $this->deliveryAfter ) { $messageControl->addAttribute( 'deliveryAfter', $this->deliveryAfter ); }
-            if( $this->preformatted ) { $messageControl->addAttribute( 'preformatted', $this->preformatted ); }
-            if( $this->allowTruncation ) { $messageControl->addAttribute( 'allowTruncation', $this->allowTruncation ); }
+
+
 
             if( $xml === false || $submitRequest === false || $submitHeader === false || $payload === false || $originator === false || $recipient === false || $messageControl === false )
             {
@@ -184,6 +189,10 @@
             {
                 $msg = 'recipientID parameter is required';
             }
+            elseif( ! $this->recipientID )
+            {
+                $msg = 'recipientID parameter is required';
+            }
             elseif( ! $this->submitTimestamp )
             {
                 $msg = 'submitTimestamp parameter is required';
@@ -204,6 +213,52 @@
             {
                 $msg = 'payload must be between 1 - 65535 characters in length';
             }
+            elseif( ! is_null( $this->deliveryBefore ) && ! ( $this->deliveryBefore instanceof Carbon ) )
+            {
+                $msg = 'deliveryBefore must be an instance of Carbon date/time library';
+            }
+            elseif( ! is_null( $this->deliveryAfter ) && ! ( $this->deliveryAfter instanceof Carbon ) )
+            {
+                $msg = 'deliveryAfter must be an instance of Carbon date/time library';
+            }
+            elseif( ! is_null( $this->transactionID ) &&  (strlen( $this->transactionID ) < 1 || strlen( $this->transactionID ) > 32) )
+            {
+                $msg = 'transactionID must be between 1 - 32 characters in length';
+            }
+            elseif( ! is_null( $this->sendResponsesToID ) &&  (strlen( $this->sendResponsesToID ) < 1 || strlen( $this->sendResponsesToID ) > 128) )
+            {
+                $msg = 'sendResponsesToID must be between 1 - 128 characters in length';
+            }
+            elseif(
+                ! is_null( $this->deliveryPriority ) &&
+                ! (
+                    $this->deliveryPriority == DeliveryPriority::HIGH ||
+                    $this->deliveryPriority == DeliveryPriority::NORMAL ||
+                    $this->deliveryPriority == DeliveryPriority::LOW
+                )
+            )
+            {
+                $msg = 'deliveryPriority must be one of HIGH, NORMAL, or LOW';
+            }
+            elseif( ! is_null( $this->allowResponse ) && ! is_bool( $this->allowResponse )  ){
+                $msg = 'allowResponse must be a boolean value';
+            }
+            elseif( ! is_null( $this->allowTruncation ) && ! is_bool( $this->allowTruncation )  ){
+                $msg = 'allowTruncation must be a boolean value';
+            }
+            elseif( ! is_null( $this->notifyWhenDelivered ) && ! is_bool( $this->notifyWhenDelivered )  ){
+                $msg = 'notifyWhenDelivered must be a boolean value';
+            }
+            elseif( ! is_null( $this->notifyWhenQueued ) && ! is_bool( $this->notifyWhenQueued )  ){
+                $msg = 'notifyWhenQueued must be a boolean value';
+            }
+            elseif( ! is_null( $this->notifyWhenRead ) && ! is_bool( $this->notifyWhenRead )  ){
+                $msg = 'notifyWhenRead must be a boolean value';
+            }
+            elseif( ! is_null( $this->preformatted ) && ! is_bool( $this->preformatted )  ){
+                $msg = 'preformatted must be a boolean value';
+            }
+
 
             if( strlen( $msg ) )
             {
