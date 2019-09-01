@@ -189,10 +189,6 @@
             {
                 $msg = 'recipientID parameter is required';
             }
-            elseif( ! $this->recipientID )
-            {
-                $msg = 'recipientID parameter is required';
-            }
             elseif( ! $this->submitTimestamp )
             {
                 $msg = 'submitTimestamp parameter is required';

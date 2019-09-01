@@ -35,8 +35,8 @@ $xml = $clientQuery
 
 | WCTP Method  | notifius/wctp   | Status |
 |---------| --- | --- | 
-|wctp-ClientQuery | NotifiUs\WCTP\XML\ClientQuery | &check; | &times; |
-|wctp-LookupSubscriber | NotifiUs\WCTP\XML\LookupSubscriber |  &times; |
+|wctp-ClientQuery | NotifiUs\WCTP\XML\ClientQuery | &check; |
+|wctp-LookupSubscriber | NotifiUs\WCTP\XML\LookupSubscriber |  &check; |
 |wctp-DeviceLocation | NotifiUs\WCTP\XML\DeviceLocation |  &times; |
 |wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply |  &times; |
 |wctp-PollForMessages |NotifiUs\WCTP\XML\PollForMessages |  &times; |
