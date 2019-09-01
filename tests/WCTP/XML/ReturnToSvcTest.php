@@ -13,9 +13,9 @@ final class ReturnToSvcTest extends TestCase
             ->address( 'address')
             ->xml();
 
-        echo PHP_EOL; echo PHP_EOL;
-        echo print_r( $xml->asXML(), true ) ;
-        echo PHP_EOL; echo PHP_EOL;
+        //echo PHP_EOL; echo PHP_EOL;
+        //echo print_r( $xml->asXML(), true ) ;
+        //echo PHP_EOL; echo PHP_EOL;
 
         $this->assertEquals( true, true );
 

@@ -40,7 +40,7 @@ $xml = $clientQuery
 |wctp-DeviceLocation | NotifiUs\WCTP\XML\DeviceLocation |  &times; |
 |wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply |  &times; |
 |wctp-PollForMessages |NotifiUs\WCTP\XML\PollForMessages |  &times; |
-|wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc |  &times; |
+|wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc |  &check; |
 |wctp-SendMsgMulti | NotifiUs\WCTP\XML\SendMsgMulti |  &times; |
 |wctp-StatusInfo |NotifiUs\WCTP\XML\StatusInfo |  &times; |
 |wctp-SubmitClientMessage | NotifiUs\WCTP\XML\SubmitClientMessage | &times; |
