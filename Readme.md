@@ -31,15 +31,13 @@ $xml = $clientQuery
 ```
 
 
-## XML Templating
+## XML Request Method Templating
 
 | WCTP Method  | notifius/wctp   | Status |
 |---------| --- | --- | 
 |wctp-ClientQuery | NotifiUs\WCTP\XML\ClientQuery | &check; | &times; |
 |wctp-LookupSubscriber | NotifiUs\WCTP\XML\LookupSubscriber |  &times; |
-|wctp-LookupResponse | NotifiUs\WCTP\XML\LookupResponse |  &times; |
 |wctp-DeviceLocation | NotifiUs\WCTP\XML\DeviceLocation |  &times; |
-|wctp-DeviceLocationResponse |NotifiUs\WCTP\XML\DeviceLocationResponse |  &times; |
 |wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply |  &times; |
 |wctp-PollForMessages |NotifiUs\WCTP\XML\PollForMessages |  &times; |
 |wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc |  &times; |
