@@ -26,9 +26,9 @@ final class LookupSubscriberTest extends TestCase
             ])
             ->xml();
 
-        echo PHP_EOL; echo PHP_EOL;
-        echo print_r( $xml->asXML(), true ) ;
-        echo PHP_EOL;
+       // echo PHP_EOL; echo PHP_EOL;
+        //echo print_r( $xml->asXML(), true ) ;
+       // echo PHP_EOL;
 
         $this->assertEquals( true, true );
     }
