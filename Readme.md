@@ -38,7 +38,7 @@ $xml = $clientQuery
 |wctp-ClientQuery | NotifiUs\WCTP\XML\ClientQuery | &check; |
 |wctp-LookupSubscriber | NotifiUs\WCTP\XML\LookupSubscriber |  &check; |
 |wctp-DeviceLocation | NotifiUs\WCTP\XML\DeviceLocation |  &check; |
-|wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply |  &times; |
+|wctp-MessageReply |NotifiUs\WCTP\XML\MessageReply |  &check; |
 |wctp-PollForMessages |NotifiUs\WCTP\XML\PollForMessages |  &times; |
 |wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc |  &check; |
 |wctp-SendMsgMulti | NotifiUs\WCTP\XML\SendMsgMulti |  &times; |
@@ -77,6 +77,33 @@ This should provide an additional level of flexibility (through conventions) and
 
 
 ## WCTP XML Methods
+
+### wctp-MessageReply
+
+Create an XML representation of the wctp-MessageReply operation. 
+
+```php
+use Carbon\Carbon;
+use NotifiUs\WCTP\XML\MessageReply;
+
+$messageReply = new MessageReply();
+
+$xml = $messageReply
+    ->messageID( 321 )
+    ->senderID( 'senderID' )
+    ->recipientID( 'recipientID' )
+    ->responseToMessageID( 123 )
+    ->submitTimestamp( Carbon::now() )
+    ->payload( 'Reply to a message' )
+    ->xml();
+
+print_r( $xml );
+
+/*
+
+*/
+```
+
 
 ### wctp-ClientQuery
 
