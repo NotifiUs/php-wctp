@@ -13,14 +13,10 @@
         protected $submitTimestamp;
         protected $senderID;
         protected $recipientID;
-        protected $messageID;
         protected $payload;
 
         // Optional
         protected $miscInfo;
-        protected $securityCode;
-        protected $transactionID;
-        protected $authorizationCode;
 
         // Message Control Options, all optional
         protected $sendResponsesToID;
@@ -33,8 +29,6 @@
         protected $deliveryAfter;
         protected $preformatted;
         protected $allowTruncation;
-
-
 
         public function submitTimestamp( Carbon $submitTimestamp )
         {
@@ -54,33 +48,9 @@
             return $this;
         }
 
-        public function messageID( $messageID )
-        {
-            $this->messageID = $messageID;
-            return $this;
-        }
-
         public function miscInfo( $miscInfo )
         {
             $this->miscInfo = $miscInfo;
-            return $this;
-        }
-
-        public function securityCode( $securityCode )
-        {
-            $this->securityCode = $securityCode;
-            return $this;
-        }
-
-        public function authorizationCode( $authorizationCode )
-        {
-            $this->authorizationCode = $authorizationCode;
-            return $this;
-        }
-
-        public function transactionID( $transactionID )
-        {
-            $this->transactionID = $transactionID;
             return $this;
         }
 
@@ -133,15 +103,12 @@
 
             $originator = $submitHeader->addChild('wctp-ClientOriginator' );
             $originator->addAttribute('senderID', $this->senderID );
-            if( $this->securityCode ){ $originator->addAttribute('securityCode', $this->securityCode ); }
             if( $this->miscInfo ){ $originator->addAttribute('MiscInfo', $this->miscInfo ); }
 
             $recipient = $submitHeader->addChild( 'wctp-Recipient' );
             $recipient->addAttribute( 'recipientID', $this->recipientID );
-            if( $this->authorizationCode ) { $recipient->addAttribute( 'authorizationCode', $this->authorizationCode ); }
 
             $messageControl = $submitHeader->addChild('wctp-ClientMessageControl' );
-            $messageControl->addAttribute( 'messageID', $this->messageID );
 
             //optional
             if( ! is_null( $this->preformatted ) ) { $messageControl->addAttribute( 'preformatted', $this->preformatted ? 'true' : 'false' ); }
@@ -152,7 +119,6 @@
             if( ! is_null(  $this->notifyWhenRead ) ) { $messageControl->addAttribute( 'notifyWhenRead', $this->notifyWhenRead ? 'true' : 'false' ); }
             if( ! is_null(  $this->deliveryPriority ) ) { $messageControl->addAttribute( 'deliveryPriority', $this->deliveryPriority ? 'true' : 'false' ); }
 
-            if( $this->transactionID ) { $messageControl->addAttribute( 'transactionID', $this->transactionID ); }
             if( $this->sendResponsesToID ) { $messageControl->addAttribute( 'sendResponsesToID', $this->sendResponsesToID ); }
 
             if( $this->deliveryBefore ) { $messageControl->addAttribute( 'deliveryBefore', $this->deliveryBefore ); }
@@ -181,10 +147,6 @@
             {
                 $msg = 'senderID parameter is required';
             }
-            elseif( ! $this->messageID )
-            {
-                $msg = 'messageID parameter is required';
-            }
             elseif( ! $this->recipientID )
             {
                 $msg = 'recipientID parameter is required';
@@ -196,10 +158,6 @@
             elseif( strlen( $this->senderID ) < 1 || strlen( $this->senderID ) > 128 )
             {
                 $msg = 'senderID must be between 1 - 128 characters in length';
-            }
-            elseif( strlen( $this->messageID ) < 1 || strlen( $this->messageID ) > 32 )
-            {
-                $msg = 'messageID must be between 1 - 32 characters in length';
             }
             elseif( strlen( $this->recipientID ) < 1 || strlen( $this->recipientID ) > 128 )
             {
@@ -216,10 +174,6 @@
             elseif( ! is_null( $this->deliveryAfter ) && ! ( $this->deliveryAfter instanceof Carbon ) )
             {
                 $msg = 'deliveryAfter must be an instance of Carbon date/time library';
-            }
-            elseif( ! is_null( $this->transactionID ) &&  (strlen( $this->transactionID ) < 1 || strlen( $this->transactionID ) > 32) )
-            {
-                $msg = 'transactionID must be between 1 - 32 characters in length';
             }
             elseif( ! is_null( $this->sendResponsesToID ) &&  (strlen( $this->sendResponsesToID ) < 1 || strlen( $this->sendResponsesToID ) > 128) )
             {

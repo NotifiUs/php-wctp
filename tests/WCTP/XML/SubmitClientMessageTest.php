@@ -14,15 +14,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 'deliveryPriority' => DeliveryPriority::NORMAL,
                 'allowResponse' => true,
@@ -51,7 +47,6 @@ final class SubmitClientMessageTest extends TestCase
 
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent!' )
@@ -66,22 +61,6 @@ final class SubmitClientMessageTest extends TestCase
 
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
-            ->messageID( 'messageID' )
-            ->senderID( 'senderID' )
-            ->submitTimestamp( Carbon::now() )
-            ->payload( 'Message to be sent!' )
-
-            ->xml();
-    }
-
-    public function testFailIfMissingMessageID(): void
-    {
-        $this->expectException( InvalidArgumentException::class );
-        $this->expectExceptionMessage( 'messageID parameter is required');
-
-        $submitRequest = new SubmitClientMessage( 'token' ) ;
-        $xml = $submitRequest
-            ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent!' )
@@ -97,7 +76,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->payload( 'Message to be sent!' )
             ->xml();
     }
@@ -111,7 +89,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->xml();
     }
@@ -124,7 +101,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( 'everyoneLovesCarbon?' )
             ->payload( 'Message to be sent!' )
             ->xml();
@@ -139,7 +115,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( str_pad('1', 65536) )
             ->xml();
@@ -151,7 +126,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( str_pad('1', 65535) )
             ->xml();
@@ -165,7 +139,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to send!' )
             ->xml();
@@ -179,7 +152,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->xml();
@@ -193,7 +165,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -217,7 +188,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -234,7 +204,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -258,7 +227,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -277,7 +245,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -294,7 +261,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -312,7 +278,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -330,7 +295,6 @@ final class SubmitClientMessageTest extends TestCase
         $xml = $submitRequest
             ->recipientID( 'recipientID' )
             ->senderID( 'senderID' )
-            ->messageID( 'messageID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message & : to send!' )
             ->messageControlOptions([
@@ -351,15 +315,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 'allowResponse' => 'true',
             ])
@@ -374,15 +334,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 //'allowResponse' => 'true',
                 'allowTruncation' => 'false',
@@ -402,15 +358,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 //'allowResponse' => 'true',
                 //'allowTruncation' => 'false',
@@ -430,15 +382,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 //'allowResponse' => 'true',
                 //'allowTruncation' => 'false',
@@ -458,15 +406,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 //'allowResponse' => 'true',
                 //'allowTruncation' => 'false',
@@ -486,15 +430,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 //'allowResponse' => 'true',
                 //'allowTruncation' => 'false',
@@ -512,15 +452,11 @@ final class SubmitClientMessageTest extends TestCase
 
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 'deliveryPriority' => DeliveryPriority::NORMAL,
                 'allowResponse' => true,
@@ -547,27 +483,7 @@ final class SubmitClientMessageTest extends TestCase
         $this->assertEquals( count( $xml->xpath('//wctp-Operation/wctp-SubmitClientMessage/wctp-SubmitClientHeader/wctp-ClientMessageControl/@sendResponsesToID') ), 1 );
         $this->assertEquals( count( $xml->xpath('//wctp-Operation/wctp-SubmitClientMessage/wctp-SubmitClientHeader/wctp-ClientMessageControl/@preformatted') ), 1 );
     }
-
-
-    public function testTransactionIdMustBeBetween1And32CharactersInLength(): void
-    {
-        $this->expectException( InvalidArgumentException::class );
-        $this->expectExceptionMessage( 'transactionID must be between 1 - 32 characters in length' );
-
-        $submitRequest = new SubmitClientMessage( 'token' ) ;
-        $xml = $submitRequest
-            ->senderID('senderID' )
-            ->messageID( 'messageID' )
-            ->recipientID( 'recipientID' )
-            ->submitTimestamp( Carbon::now() )
-            ->payload( 'Message to be sent! & more even! ' )
-            //optional
-            ->transactionID( str_pad('X', 33 ) )
-            ->authorizationCode( 'authorizationCode' )
-            ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
-            ->xml();
-    }
+    
 
     public function testSendResponsesToIdMustBeBetween1And32CharactersInLength(): void
     {
@@ -577,15 +493,11 @@ final class SubmitClientMessageTest extends TestCase
         $submitRequest = new SubmitClientMessage( 'token' ) ;
         $xml = $submitRequest
             ->senderID('senderID' )
-            ->messageID( 'messageID' )
             ->recipientID( 'recipientID' )
             ->submitTimestamp( Carbon::now() )
             ->payload( 'Message to be sent! & more even! ' )
             //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
             ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
             ->messageControlOptions([
                 'sendResponsesToID' => str_pad('X', 129 ),
             ])
