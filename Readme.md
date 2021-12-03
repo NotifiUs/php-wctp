@@ -10,7 +10,7 @@ For now, expect namespace updates and other breaking changes.
 
 ## Getting Started
 
-Coming soon: Install the library using composer: 
+Install the library using composer: 
 
 ```console
 composer require notifius/php-wctp
@@ -43,7 +43,7 @@ $xml = $clientQuery
 |wctp-ReturnToSvc |NotifiUs\WCTP\XML\ReturnToSvc |  &check; |
 |wctp-SendMsgMulti | NotifiUs\WCTP\XML\SendMsgMulti |  &times; |
 |wctp-StatusInfo |NotifiUs\WCTP\XML\StatusInfo |  &times; |
-|wctp-SubmitClientMessage | NotifiUs\WCTP\XML\SubmitClientMessage | &times; |
+|wctp-SubmitClientMessage | NotifiUs\WCTP\XML\SubmitClientMessage | &check; |
 |wctp-SubmitRequest | NotifiUs\WCTP\XML\SubmitRequest | &check; |
 |wctp-VersionQuery | NotifiUs\WCTP\XML\VersionQuery | &check; |
 
