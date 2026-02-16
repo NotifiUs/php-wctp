@@ -176,10 +176,18 @@ The php-wctp library is open-source software licensed under the [MIT license](ht
 
 ## Testing
 
-After cloning the repository and running `composer install`, you can run the test suite like this:
+After cloning the repository and running `composer install`, you can run the test suite:
 
 ```console
-vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
+vendor/bin/phpunit
+```
+
+### Static Analysis
+
+Run PHPStan to check for type and logic errors:
+
+```console
+vendor/bin/phpstan analyse
 ```
 
 ## Security Vulnerabilities

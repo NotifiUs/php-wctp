@@ -11,7 +11,8 @@ final class WCTPOperationTest extends TestCase
         $this->expectException( InvalidArgumentException::class );
         $this->expectExceptionMessage( 'Token must be between 1 - 16 characters in length' );
         $token  = str_pad('1', 17 );
-        $mock = $this->getMockForAbstractClass( WCTPOperation::class, [ $token ] );
-
+        new class( $token ) extends WCTPOperation {
+            public function xml(): \SimpleXMLElement { return new \SimpleXMLElement('<root/>'); }
+        };
     }
 }

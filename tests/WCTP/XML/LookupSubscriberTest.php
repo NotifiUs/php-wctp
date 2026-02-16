@@ -8,32 +8,6 @@ use NotifiUs\WCTP\XML\LookupSubscriber;
 
 final class LookupSubscriberTest extends TestCase
 {
-    public function testPlayground(): void
-    {
-        $lookupSubscriber = new LookupSubscriber( 'token' ) ;
-        $xml = $lookupSubscriber
-            ->senderID('senderID' )
-            ->messageID( 'messageID' )
-            ->recipientID( 'recipientID' )
-            ->submitTimestamp( Carbon::now() )
-            //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
-            ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
-            ->messageControlOptions([
-                'sendResponsesToID' => 'sendResponsesToID',
-            ])
-            ->xml();
-
-       // echo PHP_EOL; echo PHP_EOL;
-        //echo print_r( $xml->asXML(), true ) ;
-       // echo PHP_EOL;
-
-        $this->assertEquals( true, true );
-    }
-
-
     public function testFailIfMissingSenderID(): void
     {
         $this->expectException( InvalidArgumentException::class );

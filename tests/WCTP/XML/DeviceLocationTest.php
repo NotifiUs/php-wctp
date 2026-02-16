@@ -9,33 +9,6 @@ use NotifiUs\WCTP\XML\DeviceLocation;
 
 final class DeviceLocationTest extends TestCase
 {
-    public function testPlayground(): void
-    {
-        $deviceLocation = new DeviceLocation( 'token' ) ;
-        $xml = $deviceLocation
-            ->senderID('senderID' )
-            ->messageID( 'messageID' )
-            ->recipientID( 'recipientID' )
-            ->submitTimestamp( Carbon::now() )
-            //optional
-            ->transactionID( 'transactionID' )
-            ->authorizationCode( 'authorizationCode' )
-            ->miscInfo( 'miscInfo' )
-            ->securityCode( 'securityCode' )
-            ->messageControlOptions([
-                'sendResponsesToID' => 'sendResponsesToID',
-                'fixType' => FixType::APPROXIMATE
-            ])
-            ->xml();
-
-        //echo PHP_EOL; echo PHP_EOL;
-        //echo print_r( $xml->asXML(), true ) ;
-        //echo PHP_EOL;
-
-        $this->assertEquals( true, true );
-    }
-
-
     public function testFailIfMissingSenderID(): void
     {
         $this->expectException( InvalidArgumentException::class );

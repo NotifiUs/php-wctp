@@ -269,7 +269,7 @@
             }
             elseif( ! is_null( $this->onBehalfOfRecipientID ) &&  (strlen( $this->onBehalfOfRecipientID ) < 1 || strlen( $this->onBehalfOfRecipientID ) > 128) )
             {
-                $msg = 'sendResponsesToID must be between 1 - 128 characters in length';
+                $msg = 'onBehalfOfRecipientID must be between 1 - 128 characters in length';
             }
             elseif(
                 ! is_null( $this->deliveryPriority ) &&

@@ -1,0 +1,11 @@
+parameters:
+    level: 6
+    paths:
+        - src
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        - identifier: missingType.property
+        - identifier: missingType.return
+        - identifier: missingType.parameter
+        - identifier: missingType.iterableValue
+        - identifier: identical.alwaysFalse

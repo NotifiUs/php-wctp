@@ -9,37 +9,6 @@ use NotifiUs\WCTP\XML\SubmitClientMessage;
 
 final class SubmitClientMessageTest extends TestCase
 {
-    public function testPlayground(): void
-    {
-        $submitRequest = new SubmitClientMessage( 'token' ) ;
-        $xml = $submitRequest
-            ->senderID('senderID' )
-            ->recipientID( 'recipientID' )
-            ->submitTimestamp( Carbon::now() )
-            ->payload( 'Message to be sent! & more even! ' )
-            //optional
-            ->miscInfo( 'miscInfo' )
-            ->messageControlOptions([
-                'deliveryPriority' => DeliveryPriority::NORMAL,
-                'allowResponse' => true,
-                'allowTruncation' => false,
-                'deliveryAfter' => Carbon::now()->addHours(1 ),
-                'deliveryBefore' => Carbon::now()->addHours(2 ),
-                'notifyWhenDelivered' => true,
-                'notifyWhenQueued' => true,
-                'notifyWhenRead' => true,
-                'sendResponsesToID' => 'sendResponsesToID',
-                'preformatted' => false,
-            ])
-            ->xml();
-
-        //echo PHP_EOL; echo PHP_EOL;
-        //echo print_r( $xml->asXML(), true ) ;
-        //echo PHP_EOL;
-
-        $this->assertEquals( true, true );
-    }
-
     public function testFailIfMissingSenderID(): void
     {
         $this->expectException( InvalidArgumentException::class );

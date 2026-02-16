@@ -6,21 +6,6 @@ use NotifiUs\WCTP\XML\ReturnToSvc;
 final class ReturnToSvcTest extends TestCase
 {
 
-    public function testPlayground(): void
-    {
-        $returnToSvc = new ReturnToSvc('token');
-        $xml = $returnToSvc
-            ->address( 'address')
-            ->xml();
-
-        //echo PHP_EOL; echo PHP_EOL;
-        //echo print_r( $xml->asXML(), true ) ;
-        //echo PHP_EOL; echo PHP_EOL;
-
-        $this->assertEquals( true, true );
-
-    }
-
     public function testFailsIfMissingAddressMethod(): void
     {
         $this->expectException( InvalidArgumentException::class );

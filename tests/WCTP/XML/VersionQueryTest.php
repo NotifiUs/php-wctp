@@ -7,18 +7,6 @@ use NotifiUs\WCTP\XML\VersionQuery;
 final class VersionQueryTest extends TestCase
 {
 
-    public function testPlayground(): void
-    {
-        $versionQuery = new VersionQuery('token');
-        $xml = $versionQuery
-            ->inquirer( 'inquirer')
-            ->dateTime( Carbon::now() )
-            ->xml();
-
-        $this->assertEquals( true, true );
-
-    }
-
     public function testPassingTokenAddsWctpTokenParamToXML(): void
     {
         $options = [
