@@ -1,22 +1,16 @@
 # php-wctp
 
-A PHP library for creating and submitting XML WCTP requests and responses
-
-
-## Not production ready
-
-Not ready for every day use! We will tag a version 1.0.0 when we're ready for you to use in production. 
-For now, expect namespace updates and other breaking changes. 
+A PHP library for creating and submitting XML WCTP requests and responses.
 
 ## Getting Started
 
-Install the library using composer: 
+Add the library to your project using [composer](https://getcomposer.org): 
 
 ```console
 composer require notifius/php-wctp
 ```
 
-Example use of library: 
+Example usage: 
 
 ```php
 use NotifiUs\WCTP\XML\ClientQuery;
@@ -47,15 +41,17 @@ $xml = $clientQuery
 |wctp-SubmitRequest | NotifiUs\WCTP\XML\SubmitRequest | &check; |
 |wctp-VersionQuery | NotifiUs\WCTP\XML\VersionQuery | &check; |
 
+## Return Type
 
-## General Information
+The `$xml` variable will be a *SimpleXMLElement* Object. You can get the XML as a string by calling `$xml->asXML()`
 
-## Dates
+## Relaxed parameter requirements
 
-We rely on the `nesbot/carbon` composer package for handling dates throughout our library. 
+While we follow the WCTP recommendations for parameters and lengths, we don't enforce allowed characters.
+Anything that is not XML compliant will be automatically escaped, so keep that in mind.
+This should provide an additional level of flexibility (through conventions) and modernize the now ~15 year-old protocol.
 
-
-### Add WCTP token to wctp-Operation
+## Add WCTP token to wctp-Operation
 
 For all XML WCTP methods below, you can optionally pass in a `wctpToken` to the constructor:
 
@@ -64,16 +60,6 @@ $clientQuery = new ClientQuery( 'token' );
 ```
 
 This will add the XML attribute `wctpToken="token"` to the `<wctp-Operation>` element.
-
-
-### Return Type
-The `$xml` variable will be a *SimpleXMLElement* Object. You can get the XML as a string by calling `$xml->asXML()`
-
-### Relaxed parameter requirements
-
-While we follow the WCTP recommendations for parameters and lengths, we don't enforce allowed characters. 
-Anything that is not XML compliant will be automatically escaped, so keep that in mind. 
-This should provide an additional level of flexibility (through conventions) and modernize the now ~15 year-old protocol. 
 
 
 ## WCTP XML Methods
@@ -99,9 +85,6 @@ $xml = $messageReply
 
 print_r( $xml );
 
-/*
-
-*/
 ```
 
 
@@ -192,5 +175,7 @@ vendor/bin/phpstan analyse
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability, please send an e-mail to [support@notifi.us](mailto:support@notifi.us). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability, please email [support@calltheory.com](mailto:support@calltheory.com). 
+
+All security vulnerabilities will be promptly addressed.
 
